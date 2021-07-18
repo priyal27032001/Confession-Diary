@@ -11,7 +11,7 @@ This is the page of the website where you can register a new account. You can re
 If the account is registered then you can login with this page. You can login directly or through google account.
 ![Screenshot (70)](https://user-images.githubusercontent.com/76557549/126077698-15d8bbc2-03b8-4e5d-9b34-a245a5356ec8.png)
 # Secrets page
-This page shows all the secrets submitted by the users.
+This page shows all the secrets submitted by the users. If already logged in then this page opens directly. Sessions are maintained using cookies.
 ![Screenshot (75)](https://user-images.githubusercontent.com/76557549/126077747-38967684-8098-4874-baf5-cda1d3ddc67e.png)
 # Submit page
 Here you can write your secret and share it anonymously.
