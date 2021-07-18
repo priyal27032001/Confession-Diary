@@ -1,8 +1,10 @@
 
 body {
-  background-color: #E8ECEF;
+  background-color: #CE1212;
 }
-
+.back_design {
+  background-color: #EEEBDD;
+}
 .centered {
     padding-top: 200px;
     text-align: center;

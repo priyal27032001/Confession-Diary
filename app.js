@@ -7,7 +7,9 @@ const mongoose=require("mongoose");
 const session=require("express-session");
 const passport=require("passport");
 const passportLocalMongoose=require("passport-local-mongoose");
-const GoogleStrategy=require("passport-google-oauth20").Strategy;//strategy is a authentication mechanism. Applications can choose which strategy to employ
+const GoogleStrategy=require("passport-google-oauth20").Strategy;
+//strategy is a authentication mechanism.
+//Applications can choose which strategy to employ
 //Strategy gets created and them added to the passport object
 const findOrCreate=require("mongoose-findorcreate");
 ////////////using mongoose-encryption///////////
