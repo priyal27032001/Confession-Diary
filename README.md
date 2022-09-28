@@ -1,4 +1,4 @@
-# Secret-Website
+# Confession Diary
 A website where you can share your secret anonymously.
 # Home page
 This is the homepage of the website. You will have to register or if already registered then login before sharing your secret and veiwing other secrets.
