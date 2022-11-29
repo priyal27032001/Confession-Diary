@@ -12,16 +12,7 @@ const GoogleStrategy=require("passport-google-oauth20").Strategy;
 //Applications can choose which strategy to employ
 //Strategy gets created and them added to the passport object
 const findOrCreate=require("mongoose-findorcreate");
-////////////using mongoose-encryption///////////
-// const encrypt=require("mongoose-encryption");
-////////////using mongoose-encryption///////////
-///////////using hashing///////////////////////
-// const md5=require("md5");
-///////////using hashing///////////////////////
-//////////using bcrypt////////////////////////
-// const bcrypt=require("bcrypt");
-// const saltrounds=10;
-//////////using bcrypt////////////////////////
+
 const app=express();
 
 
@@ -46,18 +37,9 @@ const userSchema =new mongoose.Schema({
 
 userSchema.plugin(passportLocalMongoose);//maybe this allows to use username instead of email in login(scroll down)
 userSchema.plugin(findOrCreate);
-////////////using mongoose-encryption///////////
-//defined before model
-// const secret=process.env.SECRET;
-// userSchema.plugin(encrypt,{secret:secret,encryptedFields:["password"]});
-////////////using mongoose-encryption///////////
 
 const User=new mongoose.model("User",userSchema);
 passport.use(User.createStrategy());
-//works for only local authentication//
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
-//works for all authentication//
 passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
@@ -124,19 +106,6 @@ app.get("/logout",function(req,res){
   res.redirect("/");
 });
 app.post("/register",function(req,res){
-//////////using bcrypt////////////////////////
-// bcrypt.hash(req.body.password,saltrounds,function(err,hash){
-//   const newuser=new User({
-//     email:req.body.username,
-//     // password:md5(req.body.password) while using md5
-//     password:hash
-//   });
-//   newuser.save(function(err){
-//     if(err) console.log(err);
-//     else res.render("secrets");
-//   });
-//})
-/////////////using passport/////////////
 User.register({username:req.body.username},req.body.password,function(err,user){
   if(err){
     console.log(err);
@@ -151,24 +120,6 @@ User.register({username:req.body.username},req.body.password,function(err,user){
 
 });
  app.post("/login",function(req,res){
-  // const username=req.body.username;
-  // const pass=req.body.password;
-  // //uisng hashinhg
-  // // const pass=md5(req.body.password); using hashing
-  //
-  // User.findOne({email:username},function(err,result){
-  //   if(err) console.log(err);
-  //   else {
-  //     if(result){
-  //      bcrypt.compare(pass,result.password,function(err,result){
-  //       if(result===true)  res.render("secrets");
-  //      })
-  //
-  //     }
-  //
-  // }
-  // })
-///////////////////////using passport///////////
 const user=new User({
   username:req.body.username,
   password:req.body.password
